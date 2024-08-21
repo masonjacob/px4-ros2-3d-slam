@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "PX4 ROS2",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "registry.hub.docker.com/px4io/px4-dev-ros2-foxy",
+	"workspaceMount": "source=${localWorkspaceFolder}/workspace,target=/root/workspace,type=bind",
+	"workspaceFolder": "/root/workspace",
+	"mounts": [
+		"source=${localWorkspaceFolder}/PX4-Autopilot,target=/src/PX4-Autopilot,type=bind,consistency=cached"
+	],
+	"containerEnv": {
+		"DISPLAY": "0",
+		"WAYLAND_DISPLAY": "wayland-0",
+		"XDG_RUNTIME_DIR": "/mnt/wslg/runtime-dir",
+		"PULSE_SERVER": "/mnt/wslg/PulseServer"
+	},
+	"runArgs": [
+		"--network=host",
+		"--privileged",
+		"-v/run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix",
+		"-v/run/desktop/mnt/host/wslg:/mnt/wslg"
+	]
+	// "containerEnv":
+	// 	"DISPLAY": "${localEnv:DISPLAY}",
+	// 	"QT_X11_NO_MITSHM": "1"
+	// }
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	// Configure tool-specific properties.
+	// "vscode": {
+	// 	"extensions": [
+	// 		"ms-vscode.cpptools-extension-pack",
+	// 		"ms-vscode.makefile-tools"
+	// 	]
+	// }
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+	// "overrideCommand": false
+}

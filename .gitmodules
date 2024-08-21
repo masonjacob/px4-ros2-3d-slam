@@ -1,0 +1,10 @@
+[submodule "PX4-Autopilot"]
+	path = PX4-Autopilot
+	url = https://github.com/PX4/PX4-Autopilot.git
+[submodule "workspace/ws_sensor_combined/src/px4_msgs"]
+	path = workspace/ws_sensor_combined/src/px4_msgs
+	url = https://github.com/PX4/px4_msgs.git
+
+[submodule "workspace/ws_sensor_combined/src/px4_ros_com"]
+	path = workspace/ws_sensor_combined/src/px4_ros_com
+	url = https://github.com/PX4/px4_ros_com.git
