@@ -2,10 +2,10 @@
 	path = PX4-Autopilot
 	url = https://github.com/PX4/PX4-Autopilot.git
 
-[submodule "workspace/src/px4_msgs"]
-	path = workspace/src/px4_msgs
+[submodule "ros2_ws/src/px4_msgs"]
+	path = ros2_ws/src/px4_msgs
 	url = https://github.com/PX4/px4_msgs.git
 	
-[submodule "workspace/src/px4_ros_com"]
-	path = workspace/src/px4_ros_com
+[submodule "ros2_ws/src/px4_ros_com"]
+	path = ros2_ws/src/px4_ros_com
 	url = https://github.com/PX4/px4_ros_com.git
