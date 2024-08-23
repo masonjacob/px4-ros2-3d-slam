@@ -1,15 +1,8 @@
 {
     "name": "PX4 ROS2",
-    "remoteUser": "devuser",
-    "build": {
-        "dockerfile": "../docker-compose.yml",
-        "args": {
-            "USERNAME": "devuser",
-            "DISPLAY": "unix:0"
-        }
-    },
-    "workspaceFolder": "/home/ws",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/ws,type=bind",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/home/${env:USERNAME:-devuser}",
     "customizations": {
         "vscode": {
             "extensions":[
@@ -18,5 +11,7 @@
                 "ms-iot.vscode-ros"
             ]
         }
-    }
+    },
+    "initializeCommand": "docker compose up -d",
+    "shutdownAction": "stopCompose"
 }

@@ -1,25 +1,21 @@
 # ROS distribution to use
-ARG ROS_DISTRO=foxy
+ARG ROS_DISTRO
 
 ########################################
 # Base Image for TurtleBot3 Simulation #
 ########################################
-FROM px4io/px4-dev-ros2-{ROS_DISTRO} AS dev
+FROM px4io/px4-dev-ros2-${ROS_DISTRO} AS dev
 
 # Update git to fix git version mismatch with bind mount repos
-RUN sudo apt-get install software-properties-common
+RUN sudo apt-get -y install software-properties-common
 RUN sudo apt-add-repository ppa:git-core/ppa \
  && sudo apt-get update \
- && sudo apt-get install git
+ && sudo apt-get -y install git
 
-# Dev container arguments
-ARG USERNAME=devuser
-ARG UID=1000
-ARG GID=${UID}
 
-# Install extra tools for development
-# RUN apt-get update && apt-get install -y --no-install-recommends \
-#  gdb gdbserver nano
+ARG USERNAME
+ARG UID
+ARG GID
 
 # Create new user and home directory
 RUN groupadd --gid $GID $USERNAME \
@@ -28,9 +24,6 @@ RUN groupadd --gid $GID $USERNAME \
  && chmod 0440 /etc/sudoers.d/${USERNAME} \
  && mkdir -p /home/${USERNAME} \
  && chown -R ${UID}:${GID} /home/${USERNAME}
-
-# Set the ownership of the overlay workspace to the new user
-RUN chown -R ${UID}:${GID} /home/ws
 
 # Set the user and source entrypoint in the user's .bashrc file
 USER ${USERNAME}
