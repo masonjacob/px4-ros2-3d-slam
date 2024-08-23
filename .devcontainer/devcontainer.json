@@ -2,7 +2,7 @@
     "name": "PX4 ROS2",
     "dockerComposeFile": "../docker-compose.yml",
     "service": "dev",
-    "workspaceFolder": "/home/${env:USERNAME:-devuser}",
+    "workspaceFolder": "/home/${env:USERNAME:-devuser}/src",
     "customizations": {
         "vscode": {
             "extensions":[
